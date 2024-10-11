@@ -19,7 +19,6 @@ namespace pruebaEdwin.Controllers
         }
          
         // consulta usuarios
-         
         // GET: api/usuarios
         [HttpGet]
         public IActionResult GetAllUsers()
@@ -99,9 +98,9 @@ namespace pruebaEdwin.Controllers
 
             try
             {
-                // Llama al método sin asignar a una variable
+                
                 _usuariosRepository.UpdateUser(user);
-                return Ok("Usuario actualizado correctamente."); // Mensaje de éxito
+                return Ok("Usuario actualizado correctamente."); 
             }
             catch (KeyNotFoundException)
             {
