@@ -16,23 +16,23 @@ namespace pruebaEdwin.Repositories
 
 
 
-           // consulto todos
 
+        // consulto todos
         public List<Usuario> GetAllUsers()
         {
             return _context.Usuarios.ToList();
         }
 
 
-        // consulta por id 
 
+        // consulta por id 
         public Usuario GetUserById(int id)
         {
             return _context.Usuarios.FirstOrDefault(u => u.Id == id);
         }
 
-        //  agrego usuario
 
+        //  agrego usuario
         public void AddUser(Usuario user)
         {
             _context.Usuarios.Add(user);
@@ -61,8 +61,8 @@ namespace pruebaEdwin.Repositories
         }
 
 
-        // elimino por id
 
+        // elimino por id
         public void DeleteUser(int id)
           {
             var user = _context.Usuarios.FirstOrDefault(u => u.Id == id);

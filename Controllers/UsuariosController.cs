@@ -50,41 +50,38 @@ namespace pruebaEdwin.Controllers
         {
             try
             {
-               
                 var nombrePatron = new Regex(@"^.{3,}$");
                 var emailPatron = new Regex(@"^[^\s@]+@[^\s@]+\.[^\s@]+$");
 
-               
                 if (string.IsNullOrWhiteSpace(user.Name) || !nombrePatron.IsMatch(user.Name.Trim()))
                 {
-                    return BadRequest("El nombre del usuario no puede estar vacío y debe tener al menos 3 caracteres.");
+                    return BadRequest(new { message = "El nombre del usuario no puede estar vacío y debe tener al menos 3 caracteres." });
                 }
 
-                
                 if (string.IsNullOrWhiteSpace(user.Email) || !emailPatron.IsMatch(user.Email.Trim()))
                 {
-                    return BadRequest("El email del usuario debe ser válido (contener un '@' y un '.' en el dominio).");
+                    return BadRequest(new { message = "El email del usuario debe ser válido (contener un '@' y un '.' en el dominio)." });
                 }
 
-                
                 var existeUsuario = _usuariosRepository.GetUserByDocument(user.Document);
                 if (existeUsuario != null)
                 {
-                    return Conflict("El documento ya está en uso por otro usuario.");
+                    return Conflict(new { message = "El documento ya está en uso por otro usuario." });
                 }
 
-                
                 _usuariosRepository.AddUser(user);
 
-               
-                return CreatedAtAction(nameof(GetUserById), new { id = user.Id }, user);
+             
+                return CreatedAtAction(nameof(GetUserById), new { id = user.Id }, new
+                {
+                    user = user,
+                    message = "Usuario creado exitosamente."
+                });
             }
             catch (Exception ex)
             {
-                
-                Console.WriteLine(ex); 
-
-                return StatusCode(500, "Error interno del servidor. Por favor, inténtelo más tarde.");
+                Console.WriteLine(ex);
+                return StatusCode(500, new { message = "Error interno del servidor. Por favor, inténtelo más tarde." });
             }
         }
 
@@ -92,7 +89,7 @@ namespace pruebaEdwin.Controllers
 
 
         // actualizar  cambios
-        [HttpPut("{id}")] // Incluye el Id en la ruta
+        [HttpPut("{id}")] 
         public IActionResult UpdateUser(int id, [FromBody] Usuario user)
         {
             if (user == null || user.Id != id)
