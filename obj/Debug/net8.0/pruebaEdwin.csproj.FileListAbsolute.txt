@@ -109,3 +109,4 @@ C:\Users\DSC\Desktop\Prueba\pruebaEdwin\obj\Debug\net8.0\refint\pruebaEdwin.dll
 C:\Users\DSC\Desktop\Prueba\pruebaEdwin\obj\Debug\net8.0\pruebaEdwin.pdb
 C:\Users\DSC\Desktop\Prueba\pruebaEdwin\obj\Debug\net8.0\pruebaEdwin.genruntimeconfig.cache
 C:\Users\DSC\Desktop\Prueba\pruebaEdwin\obj\Debug\net8.0\ref\pruebaEdwin.dll
+C:\Users\DSC\Desktop\Prueba\pruebaEdwin\obj\Debug\net8.0\pruebaEdwin.sourcelink.json
